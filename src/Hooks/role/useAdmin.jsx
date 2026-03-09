@@ -1,34 +1,24 @@
-import { useQuery } from '@tanstack/react-query';
-import axios from 'axios';
-import React, { useContext } from 'react';
-import { AuthContext } from '../../Context/AuthContext';
-
-
-
-
-
+import { useQuery } from "@tanstack/react-query";
+import axios from "axios";
+import React, { useContext } from "react";
+import { AuthContext } from "../../Context/AuthContext";
 
 const useAdmin = () => {
-
-
-  let { user } = useContext(AuthContext)
-
-
+  let { user } = useContext(AuthContext);
 
   const fetchUsers = async () => {
-    const response = await axios.get(`http://localhost:3000/getAdmin/${user?.email}`);
+    const response = await axios.get(
+      `https://api.worldwisescholars.com/getAdmin/${user?.email}`,
+    );
     return response.data?.admin;
   };
-
 
   const { data: isAdmin = [], isLoading: adminLoading } = useQuery({
     queryKey: [user?.email, "isAdmin"], // The unique key for this query
     queryFn: fetchUsers, // Function to fetch the data
   });
 
-
-
-  return [isAdmin, adminLoading]
+  return [isAdmin, adminLoading];
 };
 
 export default useAdmin;

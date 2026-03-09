@@ -1,35 +1,24 @@
-import { useQuery } from '@tanstack/react-query';
-import axios from 'axios';
-import React, { useContext } from 'react';
-import { AuthContext } from '../../Context/AuthContext';
-
-
-
-
-
-
+import { useQuery } from "@tanstack/react-query";
+import axios from "axios";
+import React, { useContext } from "react";
+import { AuthContext } from "../../Context/AuthContext";
 
 const useUser = () => {
+  let { user } = useContext(AuthContext);
 
+  const fetchUsers = async () => {
+    const response = await axios.get(
+      `https://api.worldwisescholars.com/getUser/${user?.email}`,
+    );
+    return response.data?.user;
+  };
 
-    let {user}= useContext(AuthContext)
+  const { data: isUser = [], isLoading: userLoading } = useQuery({
+    queryKey: [user?.email, "isuser"], // The unique key for this query
+    queryFn: fetchUsers, // Function to fetch the data
+  });
 
-
-
-    const fetchUsers = async () => {
-        const response = await axios.get(`http://localhost:3000/getUser/${user?.email}`);
-        return response.data?.user;
-      };
-
-   
-    const { data: isUser = [], isLoading:userLoading } = useQuery({
-        queryKey: [user?.email,"isuser"], // The unique key for this query
-        queryFn: fetchUsers, // Function to fetch the data
-      });
-    
-    
-
-    return [isUser,userLoading]
+  return [isUser, userLoading];
 };
 
 export default useUser;

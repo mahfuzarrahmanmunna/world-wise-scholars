@@ -8,7 +8,7 @@ const useAmbassador = () => {
 
   const fetchUsers = async () => {
     const response = await axios.get(
-      `http://localhost:3000/getAmbassador/${user?.email}`,
+      `https://api.worldwisescholars.com/getAmbassador/${user?.email}`,
     );
     return response.data?.ambassador;
   };

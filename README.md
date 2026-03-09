@@ -9,14 +9,11 @@
 
 **Empowering Students to Pursue Global Education Opportunities**
 
-[Live Demo](https://wws-WWS-website.vercel.app) 
+[Live Demo](https://wws-WWS-website.vercel.app)
 
 </div>
 
 ---
-
-
-
 
 ## 🎯 About The Project
 
@@ -35,6 +32,7 @@
 ## ✨ Key Features
 
 ### 🎓 Study Abroad Information
+
 - Detailed guides for studying in:
   - 🇺🇸 United States
   - 🇬🇧 United Kingdom
@@ -44,26 +42,31 @@
   - 🇳🇿 New Zealand
 
 ### 🔍 Smart Search & Discovery
+
 - **University Search** - Filter by location, ranking, fees, and programs
 - **Course Search** - Find programs matching your interests and qualifications
 - **Scholarship Explorer** - Discover funding opportunities
 
 ### 📱 User Dashboard
+
 - **Application Tracking** - Monitor your application status in real-time
 - **Document Management** - Upload and organize required documents
 - **Profile Management** - Save preferences and education history
 
 ### 🎯 IELTS Preparation
+
 - Test information and requirements
 - Preparation resources
 - Tips and strategies
 
 ### 👥 Multi-Role System
+
 - **Students** - Apply and track applications
 - **Ambassadors** - Support and guide students
 - **Admins** - Manage platform content and applications
 
 ### 💬 Interactive Features
+
 - **WhatsApp Integration** - Quick chat support
 - **Animated UI** - Smooth transitions with Framer Motion
 - **Responsive Design** - Seamless experience on all devices
@@ -73,6 +76,7 @@
 ## 🛠️ Tech Stack
 
 ### Frontend
+
 - **Framework:** React 19.1.1
 - **Build Tool:** Vite 7.1.2
 - **Styling:** Tailwind CSS 4.1.12 + DaisyUI 5.1.25
@@ -85,6 +89,7 @@
 - **Notifications:** React Toastify 11.0.5 + SweetAlert2 11.22.5
 
 ### Backend
+
 - **Runtime:** Node.js
 - **Framework:** Express.js 5.1.0
 - **Database:** MongoDB 6.19.0
@@ -92,6 +97,7 @@
 - **Security:** CORS, Cookie Parser
 
 ### Development Tools
+
 - **Linting:** ESLint 9.33.0
 - **Package Manager:** npm / pnpm
 - **Deployment:** Vercel (Backend)
@@ -155,6 +161,7 @@ WWS-WWS-Website/
 ### Prerequisites
 
 Make sure you have the following installed:
+
 - **Node.js** (v18 or higher)
 - **npm** or **pnpm**
 - **MongoDB** (local or Atlas)
@@ -163,6 +170,7 @@ Make sure you have the following installed:
 ### Installation
 
 #### 1. Clone the repository
+
 ```bash
 git clone https://github.com/yourusername/WWS-WWS-Website.git
 cd WWS-WWS-Website
@@ -185,6 +193,7 @@ npm install
 ### Environment Variables
 
 #### Frontend (.env)
+
 Create a `.env` file in the `WWS-WWS-WEBSITE` directory:
 
 ```env
@@ -197,10 +206,11 @@ VITE_FIREBASE_MESSAGING_SENDER_ID=your_firebase_messaging_sender_id
 VITE_FIREBASE_APP_ID=your_firebase_app_id
 
 # Backend API URL
-VITE_API_URL=http://localhost:5000
+VITE_API_URL=https://api.worldwisescholars.com
 ```
 
 #### Backend (.env)
+
 Create a `.env` file in the `WWS-WWS-server` directory:
 
 ```env
@@ -230,22 +240,27 @@ SECRET_KEY=your_secret_key
 ### Development Mode
 
 #### Start Frontend
+
 ```bash
 cd WWS-WWS-WEBSITE
 npm run dev
 ```
+
 Frontend will run on `http://localhost:5173`
 
 #### Start Backend
+
 ```bash
 cd WWS-WWS-server
 node index.js
 ```
-Backend will run on `http://localhost:5000`
+
+Backend will run on `https://api.worldwisescholars.com`
 
 ### Production Build
 
 #### Build Frontend
+
 ```bash
 cd WWS-WWS-WEBSITE
 npm run build
@@ -253,6 +268,7 @@ npm run preview
 ```
 
 #### Deploy Backend
+
 The backend is configured for Vercel deployment using `vercel.json`
 
 ---
@@ -262,6 +278,7 @@ The backend is configured for Vercel deployment using `vercel.json`
 The platform supports three distinct user roles:
 
 ### 🎓 Student
+
 - Browse universities and courses
 - Submit applications
 - Track application status
@@ -269,12 +286,14 @@ The platform supports three distinct user roles:
 - Manage personal profile
 
 ### 🤝 Ambassador
+
 - View student applications
 - Provide guidance and support
 - Access ambassador-specific resources
 - Assist with student queries
 
 ### 👨‍💼 Admin
+
 - Manage all applications
 - Add/Edit universities and courses
 - Manage user roles
@@ -287,19 +306,19 @@ The platform supports three distinct user roles:
 
 ### Frontend
 
-| Command | Description |
-|---------|-------------|
-| `npm run dev` | Start development server |
-| `npm run build` | Build for production |
+| Command           | Description              |
+| ----------------- | ------------------------ |
+| `npm run dev`     | Start development server |
+| `npm run build`   | Build for production     |
 | `npm run preview` | Preview production build |
-| `npm run lint` | Run ESLint |
+| `npm run lint`    | Run ESLint               |
 
 ### Backend
 
-| Command | Description |
-|---------|-------------|
+| Command         | Description  |
+| --------------- | ------------ |
 | `node index.js` | Start server |
-| `npm test` | Run tests |
+| `npm test`      | Run tests    |
 
 ---
 
