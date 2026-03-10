@@ -64,6 +64,8 @@ const Home = () => {
         >
           <WhyIts />
         </Motion.div>
+
+       
         <Motion.div
           initial={{ y: 30, opacity: 0 }}
           whileInView={{ y: 0, opacity: 1 }}

@@ -82,7 +82,8 @@ const Header = () => {
         { label: 'Application Guide', to: '/applicationGuide' },
         { label: 'Next Steps', to: '/next-step' },
         { label: 'Before You Fly', to: '/before-you-fly' },
-        { label: 'Thrive Abroad', to: '/thriveAbroad' }
+        { label: 'Thrive Abroad', to: '/thriveAbroad' },
+        { label: 'About Us', to: '/about-us' }
       ]
     },
     {
