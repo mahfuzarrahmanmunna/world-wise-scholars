@@ -11,14 +11,14 @@ const Hero = () => {
 
   const slides = [
     {
-      titleLine1: 'Global Education Guidance You Can Trust',
+      titleLine1: 'Trusted by students ambitious for studying abroad',
       titleLine2: '',
-      desc: 'At World Wise Scholars, we provide end-to-end study abroad guidance for students aspiring to study in the UK, Canada Malaysia, Australia, and other leading destinations'
+      desc: 'Start your study abroad Journey with confidence and join the students who achieved their global dreams with World Wise Scholars.'
     },
     {
-      titleLine1: 'Guiding Students & Families Toward a Smarter Global Future',
+      titleLine1: 'Achieve Your future abroad dreams with confidence',
       titleLine2: '',
-      desc: 'With a strong commitment to transparency, ethics, and student success, we support not only students—but also their families—at every stage of the journey.'
+      desc: 'Discover top universities and courses worldwide. Let our expert advisors help you shape your international education pathway.'
     },
     {
       titleLine1: 'Master your IELTS preparation',
@@ -28,7 +28,7 @@ const Hero = () => {
     {
       titleLine1: 'Scholarships and financial support',
       titleLine2: '',
-      desc: 'Explore scholarship opportunities and learn how to make your study abroad journey both affordable and stress-free.'
+      desc: ' Explore scholarship opportunities and learn how to make your study abroad journey both affordable and stress-free.'
     },
   ]
 
@@ -104,7 +104,7 @@ const Hero = () => {
               </p>
               <div className="">
                 <button onClick={handleButtonClick} className="inline-flex items-center rounded-full bg-[#11AD00] hover:bg-[#4CADFF] px-6 py-3 text-white transition-colors">
-                  Apply Now
+                  Let’s Get Started
                 </button>
               </div>
               <div className="mt-4 flex items-center gap-3 ms-5 select-none">

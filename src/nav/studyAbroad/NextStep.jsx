@@ -82,48 +82,11 @@ const NextStep = () => {
             "With your documents in place, it’s time to press submit. We’ll help ensure your application is complete, free of errors and aligned with deadlines. Then you wait for that exciting offer,",
             "Build a strong resume highlighting skills, certifications, and relevant experiences.",
         ],
-        migrationHeading: "Visa, Immigration, and Legal Compliance",
-        migrationParagraphs: [
-            "Understand visa categories, requirements, and timelines. Submit applications on time and track their progress.",
-            "Ensure you have all necessary documentation ready, including financial proofs, admission letters, and health insurance.",
-            "Keep multiple copies of important documents both physically and digitally.",
-        ],
-        personalHeading: "Personal Development and Growth",
-        personalParagraphs: [
-            "Living abroad builds independence, self-reliance, and problem-solving skills.",
-            "Learn to manage time, finances, and responsibilities while balancing academics.",
-            "Engage in campus activities, societies, and networking events to broaden your horizons.",
-        ],
-        otherHeading: "Additional Tips for Success",
-        otherIntroText:
-            "Being well-prepared beyond academics is equally important. These tips will help you settle faster and enjoy your experience:",
-        subSections: [
-            {
-                heading: "Attend Webinars and Workshops",
-                paragraphs: [
-                    "Join information sessions organised by universities, alumni, and educational platforms. Clarify doubts and learn insider tips.",
-                ],
-            },
-            {
-                heading: "Network with Alumni and Current Students",
-                paragraphs: [
-                    "Connect with students who have studied abroad. Their experience will help you avoid common pitfalls and discover opportunities you might not know about.",
-                ],
-            },
-            {
-                heading: "Cultural Preparation",
-                paragraphs: [
-                    "Read about the host country’s culture, etiquette, and lifestyle. Understanding cultural nuances reduces adjustment stress and fosters positive social interactions.",
-                ],
-            },
-            {
-                heading: "Health & Safety",
-                paragraphs: [
-                    "Schedule medical checkups and vaccinations as per destination requirements.",
-                    "Prepare a first-aid kit, insurance, and emergency contacts for peace of mind.",
-                ],
-            },
-        ],
+        
+     
+        
+           
+         
         finalHeading: "Secure offer & plan logistics",
         finalText:
             "Congratulations! When your offer letter arrives, you’ll begin planning the final logistics: accepting the offer, arranging accommodation, planning travel, and preparing for your new academic journey abroad. Your adventure is about to begin!",

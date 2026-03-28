@@ -7,7 +7,7 @@ import WhyStudyAbroadMoredetails from '../../component/WhyStudyAbroadMoredetails
 import StudyAbroadQA from '../../component/StudyAbroadQA'
 import studentsImage from "../../assets/ThriveAbroad.jpg"
 import graduationImage from "../../assets/graduation.jpg"
-import counsellorImage from "../../assets/graduation.jpg"
+// import counsellorImage from "../../assets/graduation.jpg"
 import ContactHome from '../../component/ContactHome'
 
 const ThriveAbroad = () => {
@@ -63,7 +63,6 @@ const detailsProps = {
   mainDescription: "Before you board the plane, join our live orientation session. You’ll receive essential advice on visas, packing smartly, travel insurance, budgeting, and what to expect in your destination country. Be prepared. Travel with peace of mind.",
   sectionHeading: "Arrival & settling in",
   sectionText1: "Touching down is just the start. We’ll support you with airport pickup, first-week check-ins, opening bank accounts, securing mobile plans, and finding local resources. We want you to feel at home from day one.",
-  sectionText2: "Make use of libraries, online resources, and academic workshops offered by your institution. Balancing studies with part-time work requires discipline, but effective time management will help you achieve both academic excellence and financial stability.",
   buttonText: "Explore Student Support",
   buttonAction: () => {
     console.log("Student Support clicked");
@@ -77,57 +76,17 @@ const moreDetailsProps = {
   
   careerHeading: "Cultural integration & networks",
   careerParagraphs: [
-    "Beyond coursework, your overseas experience is enriched by friendships, clubs, local culture and global networks. We’ll guide you to join student societies, participate in community events and build meaningful relationships",
-    "Join clubs, societies, and student organizations to meet people with similar interests. Attend workshops, career fairs, and alumni events to connect with professionals in your field.",
-    "Remember: the friendships and connections you build today could open doors to opportunities worldwide in the future."
+    "Beyond coursework, your overseas experience is enriched by friendships, clubs, local culture and global networks. We’ll guide you to join student societies, participate in community events and build meaningful relationships.",
+    
   ],
 
   migrationHeading: "Career readiness & future planning",
   migrationParagraphs: [
     "As your studies progress, it’s never too early to think about life beyond the classroom. We’ll provide support with CVs, internship opportunities, job fairs and alumni networks so that you’re ready to step into the professional world in a global style.",
-    "Most international students are allowed to work part-time (usually 20 hours per week). This not only helps financially but also gives you valuable work experience.",
-    "Balancing studies, part-time jobs, and personal life requires strong time management skills. Avoid burnout by prioritizing rest, healthy eating, and exercise."
+   
   ],
 
-  personalHeading: "Cultural Adaptation & Mental Health",
-  personalParagraphs: [
-    "Culture shock is common, but it’s also an opportunity to grow. Stay open-minded, respect cultural differences, and engage with local communities to feel more at home.",
-    "Homesickness may hit you at times. Stay connected with family and friends online, but also make efforts to build a support system in your new country.",
-    "Take care of your mental health. Many universities provide free counselling services, student helplines, and wellness programs. Don’t hesitate to seek help if needed."
-  ],
-
-  otherHeading: "Tips for Personal Growth Abroad",
-  otherIntroText: "Beyond academics and work, thriving abroad also means personal growth and lifelong learning.",
-  subSections: [
-    {
-      heading: "Learn Local Customs",
-      paragraphs: [
-        "Take part in local festivals, traditions, and events. It helps you integrate better and makes your experience richer.",
-        "Try new cuisines, explore the city, and embrace the culture."
-      ]
-    },
-    {
-      heading: "Develop New Skills",
-      paragraphs: [
-        "Studying abroad is the perfect time to learn new skills — from learning a new language to developing leadership or communication skills.",
-        "Enroll in workshops or take online courses alongside your studies."
-      ]
-    },
-    {
-      heading: "Stay Healthy",
-      paragraphs: [
-        "Your health is key to thriving abroad. Maintain a balanced diet, exercise regularly, and make use of your student health insurance for check-ups.",
-        "Sleep well and avoid stress by keeping a routine."
-      ]
-    },
-    {
-      heading: "Travel & Explore",
-      paragraphs: [
-        "Use weekends and holidays to explore your host country or nearby destinations. Traveling not only refreshes your mind but also deepens your cultural understanding.",
-        "Document your experiences — write journals, make vlogs, or share blogs. These memories will last a lifetime."
-      ]
-    }
-  ],
+  
 
   finalHeading: "Why follow this journey with us?",
   finalText: "With World Wise Scholars, you don’t just apply abroad; you thrive abroad. From your very first idea until you walk across that graduation stage, we’re always by your side!",
