@@ -12,7 +12,9 @@ const ManageEvents = () => {
   const [search, setSearch] = useState(""); // <-- search state
 
   const fetchEvents = async () => {
-    const res = await axios.get("https://api.worldwisescholars.com/api/events");
+    const res = await axios.get(
+      "https://wws-idp-server-gray.vercel.app/api/events",
+    );
     return res.data;
   };
 
@@ -74,7 +76,7 @@ const ManageEvents = () => {
       const formData = new FormData(e.currentTarget);
       const payload = Object.fromEntries(formData.entries());
       await axios.put(
-        `https://api.worldwisescholars.com/api/event/${id}`,
+        `https://wws-idp-server-gray.vercel.app/api/event/${id}`,
         payload,
       );
       await queryClient.invalidateQueries({ queryKey: ["allevents"] });
@@ -98,7 +100,9 @@ const ManageEvents = () => {
         confirmButtonText: "Yes, delete it!",
       });
       if (!result.isConfirmed) return;
-      await axios.delete(`https://api.worldwisescholars.com/api/event/${id}`);
+      await axios.delete(
+        `https://wws-idp-server-gray.vercel.app/api/event/${id}`,
+      );
       await queryClient.invalidateQueries({ queryKey: ["allevents"] });
       Swal.fire("Deleted", "Event has been deleted.", "success");
     } catch (err) {

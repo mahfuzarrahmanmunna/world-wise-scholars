@@ -1,10 +1,9 @@
-import { motion } from 'framer-motion';
-import { useState } from 'react';
+import { motion } from "framer-motion";
+import { useState } from "react";
 
 const ReleventSection5 = () => {
   const [hoveredTool, setHoveredTool] = useState(null);
 
-  // টুলসের তালিকা
   const tools = [
     { name: "Woo", id: "woo" },
     { name: "LifterLMS", id: "lifterlms" },
@@ -25,14 +24,14 @@ const ReleventSection5 = () => {
     { name: "Tool 17", id: "tool17" },
     { name: "Tool 18", id: "tool18" },
     { name: "Tool 19", id: "tool19" },
-    { name: "Tool 20", id: "tool20" }
+    { name: "Tool 20", id: "tool20" },
   ];
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
         {/* হেডার সেকশন */}
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
@@ -47,7 +46,7 @@ const ReleventSection5 = () => {
         </motion.div>
 
         {/* টুলস গ্রিড */}
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.3, duration: 0.8 }}
@@ -58,16 +57,17 @@ const ReleventSection5 = () => {
               key={tool.id}
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
-              transition={{ 
-                delay: 0.1 * index, 
+              transition={{
+                delay: 0.1 * index,
                 duration: 0.4,
                 type: "spring",
-                stiffness: 100
+                stiffness: 100,
               }}
-              whileHover={{ 
-                y: -8, 
+              whileHover={{
+                y: -8,
                 scale: 1.03,
-                boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)"
+                boxShadow:
+                  "0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)",
               }}
               onHoverStart={() => setHoveredTool(tool.id)}
               onHoverEnd={() => setHoveredTool(null)}
@@ -75,18 +75,18 @@ const ReleventSection5 = () => {
             >
               {/* টুল লোগো - ফেক ইমেজ */}
               <div className="w-16 h-16 rounded-lg bg-gradient-to-br from-blue-100 to-indigo-200 flex items-center justify-center mb-4 overflow-hidden">
-                <img 
-                  src={`https://via.placeholder.com/150?text=${tool.name.charAt(0)}`} 
+                <img
+                  src={`https://via.placeholder.com/150?text=${tool.name.charAt(0)}`}
                   alt={tool.name}
                   className="w-full h-full object-cover"
                 />
               </div>
-              
+
               {/* টুলের নাম */}
               <span className="text-center text-sm font-medium text-gray-800">
                 {tool.name}
               </span>
-              
+
               {/* হোভার ইফেক্ট */}
               {hoveredTool === tool.id && (
                 <motion.div
@@ -119,4 +119,4 @@ const ReleventSection5 = () => {
   );
 };
 
-export default ReleventSection5
+export default ReleventSection5;

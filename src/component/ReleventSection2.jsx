@@ -36,7 +36,7 @@ const ReleventSection2 = () => {
     const fetchCounselors = async () => {
       try {
         const res = await axios.get(
-          "https://api.worldwisescholars.com/user/ambassador/show",
+          "https://wws-idp-server-gray.vercel.app/user/ambassador/show",
         );
 
         // console.log(res.data)

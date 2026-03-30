@@ -10,7 +10,7 @@ const AllApplication = () => {
 
   const fetchAllApplications = async () => {
     const response = await axios.get(
-      `https://api.worldwisescholars.com/help-from-wws`,
+      `https://wws-idp-server-gray.vercel.app/help-from-wws`,
     );
     return response.data;
   };

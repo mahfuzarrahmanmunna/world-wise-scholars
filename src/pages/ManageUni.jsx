@@ -13,7 +13,7 @@ const ManageUni = () => {
 
   const fetchUniversities = async () => {
     const res = await axios.get(
-      "https://api.worldwisescholars.com/api/search/universities",
+      "https://wws-idp-server-gray.vercel.app/api/search/universities",
     );
     return res.data;
   };
@@ -87,7 +87,7 @@ const ManageUni = () => {
           .filter(Boolean);
       }
       await axios.put(
-        `https://api.worldwisescholars.com/api/university/${id}`,
+        `https://wws-idp-server-gray.vercel.app/api/university/${id}`,
         payload,
       );
       await queryClient.invalidateQueries({ queryKey: ["alluniversities"] });
@@ -112,7 +112,7 @@ const ManageUni = () => {
       });
       if (!result.isConfirmed) return;
       await axios.delete(
-        `https://api.worldwisescholars.com/api/university/${id}`,
+        `https://wws-idp-server-gray.vercel.app/api/university/${id}`,
       );
       await queryClient.invalidateQueries({ queryKey: ["alluniversities"] });
       Swal.fire("Deleted", "University has been deleted.", "success");

@@ -10,7 +10,7 @@ const CourseDetailsPages = () => {
 
   const fetchUsers = async () => {
     const res = await fetch(
-      `https://api.worldwisescholars.com/api/course/${id}`,
+      `https://wws-idp-server-gray.vercel.app/api/course/${id}`,
     );
     return res.json();
   };

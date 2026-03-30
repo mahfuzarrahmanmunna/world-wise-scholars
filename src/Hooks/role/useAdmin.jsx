@@ -8,7 +8,7 @@ const useAdmin = () => {
 
   const fetchUsers = async () => {
     const response = await axios.get(
-      `https://api.worldwisescholars.com/getAdmin/${user?.email}`,
+      `https://wws-idp-server-gray.vercel.app/getAdmin/${user?.email}`,
     );
     return response.data?.admin;
   };

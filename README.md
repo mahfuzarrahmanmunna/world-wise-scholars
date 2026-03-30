@@ -206,7 +206,7 @@ VITE_FIREBASE_MESSAGING_SENDER_ID=your_firebase_messaging_sender_id
 VITE_FIREBASE_APP_ID=your_firebase_app_id
 
 # Backend API URL
-VITE_API_URL=https://api.worldwisescholars.com
+VITE_API_URL=https://wws-idp-server-gray.vercel.app
 ```
 
 #### Backend (.env)
@@ -255,7 +255,7 @@ cd WWS-WWS-server
 node index.js
 ```
 
-Backend will run on `https://api.worldwisescholars.com`
+Backend will run on `https://wws-idp-server-gray.vercel.app`
 
 ### Production Build
 

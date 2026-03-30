@@ -30,7 +30,7 @@ const CourseResults = () => {
           if (!cancelled) setCourses(navState.results);
         } else {
           const response = await fetch(
-            "https://api.worldwisescholars.com/api/course",
+            "https://wws-idp-server-gray.vercel.app/api/course",
           );
           const data = await response.json();
           if (!cancelled) setCourses(data);

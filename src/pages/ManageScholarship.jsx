@@ -13,7 +13,7 @@ const ManageScholarship = () => {
 
   const fetchScholarships = async () => {
     const response = await axios.get(
-      `https://api.worldwisescholars.com/api/search/scholarships`,
+      `https://wws-idp-server-gray.vercel.app/api/search/scholarships`,
     );
     return response.data;
   };
@@ -89,7 +89,7 @@ const ManageScholarship = () => {
           .filter(Boolean);
       }
       await axios.put(
-        `https://api.worldwisescholars.com/api/scholarship/${id}`,
+        `https://wws-idp-server-gray.vercel.app/api/scholarship/${id}`,
         payload,
       );
       await queryClient.invalidateQueries({ queryKey: ["allscholarship"] });
@@ -116,7 +116,7 @@ const ManageScholarship = () => {
       if (!result.isConfirmed) return;
 
       await axios.delete(
-        `https://api.worldwisescholars.com/api/scholarship/${id}`,
+        `https://wws-idp-server-gray.vercel.app/api/scholarship/${id}`,
       );
       await queryClient.invalidateQueries({ queryKey: ["allscholarship"] });
       Swal.fire("Deleted", "Scholarship has been deleted.", "success");

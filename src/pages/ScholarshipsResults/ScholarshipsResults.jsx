@@ -30,7 +30,7 @@ const ScholarshipsResults = () => {
           if (!cancelled) setScholarships(navState.results);
         } else {
           const response = await fetch(
-            "https://api.worldwisescholars.com/api/scholarships",
+            "https://wws-idp-server-gray.vercel.app/api/scholarships",
           );
           const data = await response.json();
           if (!cancelled) setScholarships(data);

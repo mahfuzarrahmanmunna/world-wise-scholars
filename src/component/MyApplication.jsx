@@ -10,7 +10,7 @@ const MyApplication = () => {
 
   const fetchUsers = async () => {
     const response = await axios.get(
-      `https://api.worldwisescholars.com/help-from-wws/${user?.email}`,
+      `https://wws-idp-server-gray.vercel.app/help-from-wws/${user?.email}`,
     );
     return response.data;
   };
@@ -36,7 +36,7 @@ const MyApplication = () => {
     if (result.isConfirmed) {
       try {
         await axios.delete(
-          `https://api.worldwisescholars.com/help-from-wws/${applicationId}`,
+          `https://wws-idp-server-gray.vercel.app/help-from-wws/${applicationId}`,
         );
 
         // Invalidate and refetch the query to update the UI

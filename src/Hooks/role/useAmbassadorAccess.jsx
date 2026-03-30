@@ -11,7 +11,7 @@ const useAmbassadorAccess = () => {
 
     try {
       const { data } = await axios.get(
-        `${import.meta.env.VITE_API_URL || "https://api.worldwisescholars.com"}/ambassador/access/${user.email}`,
+        `${import.meta.env.VITE_API_URL || "https://wws-idp-server-gray.vercel.app"}/ambassador/access/${user.email}`,
         { withCredentials: true },
       );
       return data;

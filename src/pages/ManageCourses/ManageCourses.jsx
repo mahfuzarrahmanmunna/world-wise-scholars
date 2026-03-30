@@ -13,7 +13,9 @@ const ManageCourses = () => {
 
   // Fetch courses
   const fetchCourses = async () => {
-    const res = await axios.get("https://api.worldwisescholars.com/api/course");
+    const res = await axios.get(
+      "https://wws-idp-server-gray.vercel.app/api/course",
+    );
     return res.data;
   };
 
@@ -75,7 +77,7 @@ const ManageCourses = () => {
       const formData = new FormData(e.currentTarget);
       const payload = Object.fromEntries(formData.entries());
       await axios.put(
-        `https://api.worldwisescholars.com/api/course/${id}`,
+        `https://wws-idp-server-gray.vercel.app/api/course/${id}`,
         payload,
       );
       await queryClient.invalidateQueries({ queryKey: ["allcourses"] });
@@ -99,7 +101,9 @@ const ManageCourses = () => {
         confirmButtonText: "Yes, delete it!",
       });
       if (!result.isConfirmed) return;
-      await axios.delete(`https://api.worldwisescholars.com/api/course/${id}`);
+      await axios.delete(
+        `https://wws-idp-server-gray.vercel.app/api/course/${id}`,
+      );
       await queryClient.invalidateQueries({ queryKey: ["allcourses"] });
       Swal.fire("Deleted", "Course deleted successfully.", "success");
     } catch (err) {

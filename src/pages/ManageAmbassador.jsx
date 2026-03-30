@@ -13,7 +13,7 @@ const ManageAmbassador = () => {
 
   const fetchAmbassadors = async () => {
     const response = await axios.get(
-      `https://api.worldwisescholars.com/user/ambassador`,
+      `https://wws-idp-server-gray.vercel.app/user/ambassador`,
     );
     return response.data;
   };
@@ -60,7 +60,7 @@ const ManageAmbassador = () => {
       }));
 
       await axios.patch(
-        `https://api.worldwisescholars.com/user/ambassador/${ambassadorId}/show`,
+        `https://wws-idp-server-gray.vercel.app/user/ambassador/${ambassadorId}/show`,
         { show: newValue },
       );
 
@@ -123,7 +123,7 @@ const ManageAmbassador = () => {
 
       // Send PATCH request to update database
       await axios.patch(
-        `https://api.worldwisescholars.com/user/ambassador/${ambassadorId}`,
+        `https://wws-idp-server-gray.vercel.app/user/ambassador/${ambassadorId}`,
         permissionUpdate,
       );
 

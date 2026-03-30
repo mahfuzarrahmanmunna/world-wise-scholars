@@ -12,7 +12,7 @@ const ManageApplication = () => {
 
   const fetchUsers = async () => {
     const response = await axios.get(
-      `https://api.worldwisescholars.com/help-from-wws`,
+      `https://wws-idp-server-gray.vercel.app/help-from-wws`,
     );
     return response.data;
   };
@@ -36,7 +36,7 @@ const ManageApplication = () => {
     if (result.isConfirmed) {
       try {
         await axios.delete(
-          `https://api.worldwisescholars.com/help-from-wws/${applicationId}`,
+          `https://wws-idp-server-gray.vercel.app/help-from-wws/${applicationId}`,
         );
         queryClient.invalidateQueries(["allApp"]);
         Swal.fire("Deleted!", "Application has been deleted.", "success");
@@ -50,7 +50,7 @@ const ManageApplication = () => {
   const handleStatusChange = async (applicationId, newStatus) => {
     try {
       await axios.patch(
-        `https://api.worldwisescholars.com/help-from-wws/${applicationId}`,
+        `https://wws-idp-server-gray.vercel.app/help-from-wws/${applicationId}`,
         { status: newStatus },
       );
       // queryClient.invalidateQueries(['allApp'])

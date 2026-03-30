@@ -44,19 +44,21 @@ const SearchResults = () => {
       let apiEndpoint = "";
       switch (type) {
         case "courses":
-          apiEndpoint = "https://api.worldwisescholars.com/api/course";
+          apiEndpoint = "https://wws-idp-server-gray.vercel.app/api/course";
           break;
         case "scholarships":
-          apiEndpoint = "https://api.worldwisescholars.com/api/scholarships";
+          apiEndpoint =
+            "https://wws-idp-server-gray.vercel.app/api/scholarships";
           break;
         case "universities":
-          apiEndpoint = "https://api.worldwisescholars.com/api/universities";
+          apiEndpoint =
+            "https://wws-idp-server-gray.vercel.app/api/universities";
           break;
         case "events":
-          apiEndpoint = "https://api.worldwisescholars.com/api/events";
+          apiEndpoint = "https://wws-idp-server-gray.vercel.app/api/events";
           break;
         default:
-          apiEndpoint = "https://api.worldwisescholars.com/api/course";
+          apiEndpoint = "https://wws-idp-server-gray.vercel.app/api/course";
       }
       const response = await fetch(apiEndpoint);
       if (!response.ok)

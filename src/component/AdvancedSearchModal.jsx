@@ -30,7 +30,7 @@ const AdvancedSearchModal = () => {
     if (isModalOpen) {
       setLoading(true);
       axios
-        .get("https://api.worldwisescholars.com/popular")
+        .get("https://wws-idp-server-gray.vercel.app/popular")
         .then((response) => {
           setCourses(response.data);
           setLoading(false);
@@ -92,7 +92,7 @@ const AdvancedSearchModal = () => {
 
       // Make API call to get filtered results
       const response = await axios.get(
-        `https://api.worldwisescholars.com/popular/courses?${queryParams.toString()}`,
+        `https://wws-idp-server-gray.vercel.app/popular/courses?${queryParams.toString()}`,
       );
 
       // Store results in sessionStorage to pass to results page

@@ -31,7 +31,7 @@ const UniversityResults = () => {
           if (!cancelled) setUniversities(navState.results);
         } else {
           const res = await fetch(
-            "https://api.worldwisescholars.com/api/universities",
+            "https://wws-idp-server-gray.vercel.app/api/universities",
           );
           const data = await res.json();
           if (!cancelled) setUniversities(data);

@@ -77,7 +77,7 @@ const Collaborates = () => {
 
     try {
       const response = await axios.post(
-        "https://api.worldwisescholars.com/collaborate",
+        "https://wws-idp-server-gray.vercel.app/collaborate",
         formData,
       );
 

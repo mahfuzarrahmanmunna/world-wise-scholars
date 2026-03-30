@@ -1,124 +1,129 @@
-import React, { useState } from 'react'
-import useAxiosSecure from '../Hooks/useAxiosSecure/useAxiosSecure'
-import { toast } from 'react-toastify'
-import { useNavigate } from 'react-router-dom'
-import AdvancedSearchModal from './AdvancedSearchModal'
+import React, { useState } from "react";
+import useAxiosSecure from "../Hooks/useAxiosSecure/useAxiosSecure";
+import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
+import AdvancedSearchModal from "./AdvancedSearchModal";
 
 const SearchCard = () => {
-  const [activeTab, setActiveTab] = useState('Courses')
-  const [loading, setLoading] = useState(false)
-  const axiosSecure = useAxiosSecure()
+  const [activeTab, setActiveTab] = useState("Courses");
+  const [loading, setLoading] = useState(false);
+  const axiosSecure = useAxiosSecure();
 
-  let navigate = useNavigate()
+  let navigate = useNavigate();
 
-  const tabs = ['Courses', 'Scholarships', 'Universities', 'Events', 'Guide me', 'Get instant offer']
+  const tabs = [
+    "Courses",
+    "Scholarships",
+    "Universities",
+    "Events",
+    "Guide me",
+    "Get instant offer",
+  ];
 
   // Handle tab switching
   const handleTabChange = (tab) => {
-    setActiveTab(tab)
-    setLoading(false) // Reset loading state when switching tabs
-  }
+    setActiveTab(tab);
+    setLoading(false); // Reset loading state when switching tabs
+  };
 
   // Form states for different tabs
   const [coursesForm, setCoursesForm] = useState({
-    subject: '',
-    studyLevel: '',
-    destination: ''
-  })
+    subject: "",
+    studyLevel: "",
+    destination: "",
+  });
 
   const [scholarshipsForm, setScholarshipsForm] = useState({
-    studyLevel: '',
-    destination: ''
-  })
+    studyLevel: "",
+    destination: "",
+  });
 
   const [universitiesForm, setUniversitiesForm] = useState({
-    universityName: '',
-    destination: ''
-  })
+    universityName: "",
+    destination: "",
+  });
 
   const [eventsForm, setEventsForm] = useState({
-    city: '',
-    month: '',
-    destination: ''
-  })
-
-
+    city: "",
+    month: "",
+    destination: "",
+  });
 
   // Handle form submissions
   const handleSearch = async (e) => {
-    e.preventDefault()
+    e.preventDefault();
 
     // For informational tabs, don't submit forms
-    if (activeTab === 'Guide me' || activeTab === 'Get instant offer') {
-      return
+    if (activeTab === "Guide me" || activeTab === "Get instant offer") {
+      return;
     }
 
-    setLoading(true)
-    console.log(coursesForm, scholarshipsForm, universitiesForm)
+    setLoading(true);
+    console.log(coursesForm, scholarshipsForm, universitiesForm);
 
     try {
-      let endpoint = ''
-      let data = {}
+      let endpoint = "";
+      let data = {};
 
       switch (activeTab) {
-        case 'Courses':
-          endpoint = '/api/search/course'
-          data = coursesForm
-          break
-        case 'Scholarships':
-          endpoint = '/api/search/scholarships'
-          data = scholarshipsForm
-          break
-        case 'Universities':
-          endpoint = '/api/search/universities'
-          data = universitiesForm
-          break
-        case 'Events':
-          endpoint = '/api/search/events'
-          data = eventsForm
-          break
+        case "Courses":
+          endpoint = "/api/search/course";
+          data = coursesForm;
+          break;
+        case "Scholarships":
+          endpoint = "/api/search/scholarships";
+          data = scholarshipsForm;
+          break;
+        case "Universities":
+          endpoint = "/api/search/universities";
+          data = universitiesForm;
+          break;
+        case "Events":
+          endpoint = "/api/search/events";
+          data = eventsForm;
+          break;
         default:
-          throw new Error('Invalid tab selected')
+          throw new Error("Invalid tab selected");
       }
 
-      const response = await axiosSecure.post(endpoint, data)
+      const response = await axiosSecure.post(endpoint, data);
 
       if (response.data.success) {
-        toast.success('Search completed successfully!')
+        toast.success("Search completed successfully!");
         // 👉 result data সহ specific route এ navigate করা
         const routeMap = {
-          'Courses': '/search-results/courses',
-          'Scholarships': '/search-results/scholarships', 
-          'Universities': '/search-results/universities',
-          'Events': '/search-results/events'
-        }
-        const targetRoute = routeMap[activeTab] || '/search-results'
-        
+          Courses: "/search-results/courses",
+          Scholarships: "/search-results/scholarships",
+          Universities: "/search-results/universities",
+          Events: "/search-results/events",
+        };
+        const targetRoute = routeMap[activeTab] || "/search-results";
+
         // Search data এবং filters pass করা
-        navigate(targetRoute, { 
-          state: { 
-            results: response.data.data, 
+        navigate(targetRoute, {
+          state: {
+            results: response.data.data,
             tab: activeTab,
             searchData: data,
-            searchType: activeTab.toLowerCase()
-          } 
-        })
+            searchType: activeTab.toLowerCase(),
+          },
+        });
       } else {
-        toast.error(response.data.message || 'Search failed')
+        toast.error(response.data.message || "Search failed");
       }
     } catch (error) {
-      console.error('Search error:', error)
-      toast.error('An error occurred during search. Please try again.')
+      console.error("Search error:", error);
+      toast.error("An error occurred during search. Please try again.");
     } finally {
-      setLoading(false)
+      setLoading(false);
     }
-  }
+  };
 
   // Render different forms based on active tab
   const renderForm = () => {
-    console.log('Current active tab:', activeTab) // Debug log
+    console.log("Current active tab:", activeTab); // Debug log
     switch (activeTab) {
-      case 'Courses':
+      case "Courses":
         return (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-3">
             <div className="lg:col-span-4">
@@ -127,7 +132,9 @@ const SearchCard = () => {
                 type="text"
                 placeholder="Enter course subject e.g. Law"
                 value={coursesForm.subject}
-                onChange={(e) => setCoursesForm({ ...coursesForm, subject: e.target.value })}
+                onChange={(e) =>
+                  setCoursesForm({ ...coursesForm, subject: e.target.value })
+                }
                 className="w-full rounded-lg border border-gray-300 px-4 py-3 text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
               />
             </div>
@@ -135,7 +142,9 @@ const SearchCard = () => {
               <label className="sr-only">Study level</label>
               <select
                 value={coursesForm.studyLevel}
-                onChange={(e) => setCoursesForm({ ...coursesForm, studyLevel: e.target.value })}
+                onChange={(e) =>
+                  setCoursesForm({ ...coursesForm, studyLevel: e.target.value })
+                }
                 className="w-full rounded-lg border border-slate-300 px-4 py-3 text-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-500"
               >
                 <option value="">Select study level</option>
@@ -150,7 +159,12 @@ const SearchCard = () => {
               <label className="sr-only">Study destination</label>
               <select
                 value={coursesForm.destination}
-                onChange={(e) => setCoursesForm({ ...coursesForm, destination: e.target.value })}
+                onChange={(e) =>
+                  setCoursesForm({
+                    ...coursesForm,
+                    destination: e.target.value,
+                  })
+                }
                 className="w-full rounded-lg border border-slate-300 px-4 py-3 text-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-500"
               >
                 <option value="">Select a study destination</option>
@@ -170,20 +184,25 @@ const SearchCard = () => {
                 disabled={loading}
                 className="inline-flex items-center gap-2 rounded-full bg-[#11AD00] px-6 py-3 text-white hover:bg-[#4CADFF] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                {loading ? 'Searching...' : 'Search'}
+                {loading ? "Searching..." : "Search"}
               </button>
             </div>
           </div>
-        )
+        );
 
-      case 'Scholarships':
+      case "Scholarships":
         return (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-3">
             <div className="lg:col-span-6">
               <label className="sr-only">Study level</label>
               <select
                 value={scholarshipsForm.studyLevel}
-                onChange={(e) => setScholarshipsForm({ ...scholarshipsForm, studyLevel: e.target.value })}
+                onChange={(e) =>
+                  setScholarshipsForm({
+                    ...scholarshipsForm,
+                    studyLevel: e.target.value,
+                  })
+                }
                 className="w-full rounded-lg border border-slate-300 px-4 py-3 text-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-500"
               >
                 <option value="">Select study level</option>
@@ -197,7 +216,12 @@ const SearchCard = () => {
               <label className="sr-only">Study destination</label>
               <select
                 value={scholarshipsForm.destination}
-                onChange={(e) => setScholarshipsForm({ ...scholarshipsForm, destination: e.target.value })}
+                onChange={(e) =>
+                  setScholarshipsForm({
+                    ...scholarshipsForm,
+                    destination: e.target.value,
+                  })
+                }
                 className="w-full rounded-lg border border-slate-300 px-4 py-3 text-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-500"
               >
                 <option value="">Select a study destination</option>
@@ -217,13 +241,13 @@ const SearchCard = () => {
                 disabled={loading}
                 className="inline-flex items-center gap-2 rounded-full bg-green-600 px-6 py-3 text-white hover:bg-green-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                {loading ? 'Searching...' : 'Search'}
+                {loading ? "Searching..." : "Search"}
               </button>
             </div>
           </div>
-        )
+        );
 
-      case 'Universities':
+      case "Universities":
         return (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-3">
             <div className="lg:col-span-6">
@@ -232,7 +256,12 @@ const SearchCard = () => {
                 type="text"
                 placeholder="Search by university name"
                 value={universitiesForm.universityName}
-                onChange={(e) => setUniversitiesForm({ ...universitiesForm, universityName: e.target.value })}
+                onChange={(e) =>
+                  setUniversitiesForm({
+                    ...universitiesForm,
+                    universityName: e.target.value,
+                  })
+                }
                 className="w-full rounded-lg border border-gray-300 px-4 py-3 text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
               />
             </div>
@@ -240,7 +269,12 @@ const SearchCard = () => {
               <label className="sr-only">Study destination</label>
               <select
                 value={universitiesForm.destination}
-                onChange={(e) => setUniversitiesForm({ ...universitiesForm, destination: e.target.value })}
+                onChange={(e) =>
+                  setUniversitiesForm({
+                    ...universitiesForm,
+                    destination: e.target.value,
+                  })
+                }
                 className="w-full rounded-lg border border-slate-300 px-4 py-3 text-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-500"
               >
                 <option value="">Select a study destination</option>
@@ -260,20 +294,22 @@ const SearchCard = () => {
                 disabled={loading}
                 className="inline-flex items-center gap-2 rounded-full bg-green-600 px-6 py-3 text-white hover:bg-green-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                {loading ? 'Searching...' : 'Search'}
+                {loading ? "Searching..." : "Search"}
               </button>
             </div>
           </div>
-        )
+        );
 
-      case 'Events':
+      case "Events":
         return (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-3">
             <div className="lg:col-span-4">
               <label className="sr-only">City</label>
               <select
                 value={eventsForm.city}
-                onChange={(e) => setEventsForm({ ...eventsForm, city: e.target.value })}
+                onChange={(e) =>
+                  setEventsForm({ ...eventsForm, city: e.target.value })
+                }
                 className="w-full rounded-lg border border-slate-300 px-4 py-3 text-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-500"
               >
                 <option value="">City</option>
@@ -288,7 +324,9 @@ const SearchCard = () => {
               <label className="sr-only">Month</label>
               <select
                 value={eventsForm.month}
-                onChange={(e) => setEventsForm({ ...eventsForm, month: e.target.value })}
+                onChange={(e) =>
+                  setEventsForm({ ...eventsForm, month: e.target.value })
+                }
                 className="w-full rounded-lg border border-slate-300 px-4 py-3 text-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-500"
               >
                 <option value="">Month</option>
@@ -310,7 +348,9 @@ const SearchCard = () => {
               <label className="sr-only">Study destinations</label>
               <select
                 value={eventsForm.destination}
-                onChange={(e) => setEventsForm({ ...eventsForm, destination: e.target.value })}
+                onChange={(e) =>
+                  setEventsForm({ ...eventsForm, destination: e.target.value })
+                }
                 className="w-full rounded-lg border border-slate-300 px-4 py-3 text-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-500"
               >
                 <option value="">Study destinations</option>
@@ -330,39 +370,58 @@ const SearchCard = () => {
                 disabled={loading}
                 className="inline-flex items-center gap-2 rounded-full bg-green-600 px-6 py-3 text-white hover:bg-green-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                {loading ? 'Searching...' : 'Search'}
+                {loading ? "Searching..." : "Search"}
               </button>
             </div>
           </div>
-        )
+        );
 
-      case 'Guide me':
+      case "Guide me":
         return (
           <div className="py-8">
             <div className="text-center">
               <div className="mb-6">
-                <h3 className="text-2xl font-bold text-gray-800 mb-4">Get Personalized Study Guidance</h3>
+                <h3 className="text-2xl font-bold text-gray-800 mb-4">
+                  Get Personalized Study Guidance
+                </h3>
                 <p className="text-gray-600 text-lg leading-relaxed max-w-3xl mx-auto">
-                  Our expert counselors are here to help you make the best decisions for your international education journey.
-                  Get personalized advice on universities, courses, scholarships, and application processes.
+                  Our expert counselors are here to help you make the best
+                  decisions for your international education journey. Get
+                  personalized advice on universities, courses, scholarships,
+                  and application processes.
                 </p>
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
                 <div className="bg-blue-50 p-6 rounded-lg">
                   <div className="text-blue-600 text-3xl mb-3">🎓</div>
-                  <h4 className="font-semibold text-gray-800 mb-2">University Selection</h4>
-                  <p className="text-gray-600 text-sm">Find the perfect university that matches your academic goals and budget.</p>
+                  <h4 className="font-semibold text-gray-800 mb-2">
+                    University Selection
+                  </h4>
+                  <p className="text-gray-600 text-sm">
+                    Find the perfect university that matches your academic goals
+                    and budget.
+                  </p>
                 </div>
                 <div className="bg-green-50 p-6 rounded-lg">
                   <div className="text-green-600 text-3xl mb-3">💰</div>
-                  <h4 className="font-semibold text-gray-800 mb-2">Scholarship Guidance</h4>
-                  <p className="text-gray-600 text-sm">Discover available scholarships and funding opportunities for your studies.</p>
+                  <h4 className="font-semibold text-gray-800 mb-2">
+                    Scholarship Guidance
+                  </h4>
+                  <p className="text-gray-600 text-sm">
+                    Discover available scholarships and funding opportunities
+                    for your studies.
+                  </p>
                 </div>
                 <div className="bg-purple-50 p-6 rounded-lg">
                   <div className="text-purple-600 text-3xl mb-3">📋</div>
-                  <h4 className="font-semibold text-gray-800 mb-2">Application Support</h4>
-                  <p className="text-gray-600 text-sm">Get step-by-step guidance through the entire application process.</p>
+                  <h4 className="font-semibold text-gray-800 mb-2">
+                    Application Support
+                  </h4>
+                  <p className="text-gray-600 text-sm">
+                    Get step-by-step guidance through the entire application
+                    process.
+                  </p>
                 </div>
               </div>
 
@@ -376,35 +435,54 @@ const SearchCard = () => {
               </div>  */}
             </div>
           </div>
-        )
+        );
 
-      case 'Get instant offer':
+      case "Get instant offer":
         return (
           <div className="py-8">
             <div className="text-center">
               <div className="mb-6">
-                <h3 className="text-2xl font-bold text-gray-800 mb-4">Get Your Instant University Offer</h3>
+                <h3 className="text-2xl font-bold text-gray-800 mb-4">
+                  Get Your Instant University Offer
+                </h3>
                 <p className="text-gray-600 text-lg leading-relaxed max-w-3xl mx-auto">
-                  Skip the lengthy application process! Get instant conditional offers from top universities worldwide.
-                  Our streamlined process connects you directly with universities that match your profile.
+                  Skip the lengthy application process! Get instant conditional
+                  offers from top universities worldwide. Our streamlined
+                  process connects you directly with universities that match
+                  your profile.
                 </p>
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
                 <div className="bg-blue-50 p-6 rounded-lg">
                   <div className="text-blue-600 text-3xl mb-3">⚡</div>
-                  <h4 className="font-semibold text-gray-800 mb-2">Instant Response</h4>
-                  <p className="text-gray-600 text-sm">Get immediate conditional offers within 24-48 hours of submission.</p>
+                  <h4 className="font-semibold text-gray-800 mb-2">
+                    Instant Response
+                  </h4>
+                  <p className="text-gray-600 text-sm">
+                    Get immediate conditional offers within 24-48 hours of
+                    submission.
+                  </p>
                 </div>
                 <div className="bg-green-50 p-6 rounded-lg">
                   <div className="text-green-600 text-3xl mb-3">🎯</div>
-                  <h4 className="font-semibold text-gray-800 mb-2">Direct University Access</h4>
-                  <p className="text-gray-600 text-sm">Connect directly with university admission teams and decision makers.</p>
+                  <h4 className="font-semibold text-gray-800 mb-2">
+                    Direct University Access
+                  </h4>
+                  <p className="text-gray-600 text-sm">
+                    Connect directly with university admission teams and
+                    decision makers.
+                  </p>
                 </div>
                 <div className="bg-purple-50 p-6 rounded-lg">
                   <div className="text-purple-600 text-3xl mb-3">📄</div>
-                  <h4 className="font-semibold text-gray-800 mb-2">Simplified Process</h4>
-                  <p className="text-gray-600 text-sm">Minimal documentation required - just your academic credentials and preferences.</p>
+                  <h4 className="font-semibold text-gray-800 mb-2">
+                    Simplified Process
+                  </h4>
+                  <p className="text-gray-600 text-sm">
+                    Minimal documentation required - just your academic
+                    credentials and preferences.
+                  </p>
                 </div>
               </div>
 
@@ -440,12 +518,12 @@ const SearchCard = () => {
               </div> */}
             </div>
           </div>
-        )
+        );
 
       default:
-        return null
+        return null;
     }
-  }
+  };
 
   return (
     <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mt-6 lg:-mt-20">
@@ -460,10 +538,11 @@ const SearchCard = () => {
             <button
               key={tab}
               onClick={() => handleTabChange(tab)}
-              className={`pb-3 text-sm sm:text-base whitespace-nowrap border-b-2 -mb-px transition-colors cursor-pointer ${activeTab === tab
-                  ? 'border-blue-600 text-blue-700'
-                  : 'border-transparent text-gray-600 hover:text-blue-600'
-                }`}
+              className={`pb-3 text-sm sm:text-base whitespace-nowrap border-b-2 -mb-px transition-colors cursor-pointer ${
+                activeTab === tab
+                  ? "border-blue-600 text-blue-700"
+                  : "border-transparent text-gray-600 hover:text-blue-600"
+              }`}
             >
               {tab}
             </button>
@@ -472,21 +551,21 @@ const SearchCard = () => {
 
         {/* Form */}
         <div className="px-4 sm:px-6 pb-5 pt-4">
-          {activeTab === 'Guide me' || activeTab === 'Get instant offer' ? (
+          {activeTab === "Guide me" || activeTab === "Get instant offer" ? (
             renderForm()
-          ) : (<>
-            <form key={activeTab} onSubmit={handleSearch}>
-              {renderForm()}
-              
-            </form>
-            {/* <button className='inline-flex items-center gap-2 rounded-full bg-[#11AD00] px-6 py-3 text-white hover:bg-[#4CADFF] transition-colors disabled:opacity-50 disabled:cursor-not-allowed'>Advanced Search</button> */}
-            <AdvancedSearchModal></AdvancedSearchModal>
+          ) : (
+            <>
+              <form key={activeTab} onSubmit={handleSearch}>
+                {renderForm()}
+              </form>
+              {/* <button className='inline-flex items-center gap-2 rounded-full bg-[#11AD00] px-6 py-3 text-white hover:bg-[#4CADFF] transition-colors disabled:opacity-50 disabled:cursor-not-allowed'>Advanced Search</button> */}
+              <AdvancedSearchModal></AdvancedSearchModal>
             </>
           )}
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default SearchCard
+export default SearchCard;

@@ -30,7 +30,7 @@ const EventsResults = () => {
           if (!cancelled) setEvents(navState.results);
         } else {
           const response = await fetch(
-            "https://api.worldwisescholars.com/api/events",
+            "https://wws-idp-server-gray.vercel.app/api/events",
           );
           const data = await response.json();
           if (!cancelled) setEvents(data);

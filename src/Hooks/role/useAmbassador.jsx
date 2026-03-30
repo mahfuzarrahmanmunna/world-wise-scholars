@@ -8,7 +8,7 @@ const useAmbassador = () => {
 
   const fetchUsers = async () => {
     const response = await axios.get(
-      `https://api.worldwisescholars.com/getAmbassador/${user?.email}`,
+      `https://wws-idp-server-gray.vercel.app/getAmbassador/${user?.email}`,
     );
     return response.data?.ambassador;
   };

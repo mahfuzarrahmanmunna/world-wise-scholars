@@ -8,7 +8,7 @@ const useUser = () => {
 
   const fetchUsers = async () => {
     const response = await axios.get(
-      `https://api.worldwisescholars.com/getUser/${user?.email}`,
+      `https://wws-idp-server-gray.vercel.app/getUser/${user?.email}`,
     );
     return response.data?.user;
   };

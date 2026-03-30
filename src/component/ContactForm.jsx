@@ -95,7 +95,7 @@ const ContactForm = () => {
 
       console.log(dataToSubmit);
       await axios.post(
-        "https://api.worldwisescholars.com/help-from-wws",
+        "https://wws-idp-server-gray.vercel.app/help-from-wws",
         dataToSubmit,
       );
 

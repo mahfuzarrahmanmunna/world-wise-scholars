@@ -15,7 +15,9 @@ const ActivityLog = () => {
   const [isAdmin, adminLoading] = useAdmin();
 
   const fetchUsers = async () => {
-    const response = await axios.get(`https://api.worldwisescholars.com/users`);
+    const response = await axios.get(
+      `https://wws-idp-server-gray.vercel.app/users`,
+    );
     return response.data.data;
   };
 
@@ -28,9 +30,12 @@ const ActivityLog = () => {
 
   const handleRoleChange = async (userId, newRole) => {
     try {
-      await axios.patch(`https://api.worldwisescholars.com/users/${userId}`, {
-        role: newRole,
-      });
+      await axios.patch(
+        `https://wws-idp-server-gray.vercel.app/users/${userId}`,
+        {
+          role: newRole,
+        },
+      );
       queryClient.invalidateQueries(["allUsers"]);
       Swal.fire({
         icon: "success",
@@ -58,7 +63,9 @@ const ActivityLog = () => {
 
     if (result.isConfirmed) {
       try {
-        await axios.delete(`https://api.worldwisescholars.com/users/${userId}`);
+        await axios.delete(
+          `https://wws-idp-server-gray.vercel.app/users/${userId}`,
+        );
         queryClient.invalidateQueries(["allUsers"]);
         Swal.fire("Deleted!", "User has been deleted.", "success");
       } catch (error) {

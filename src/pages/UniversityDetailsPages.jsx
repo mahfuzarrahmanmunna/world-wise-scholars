@@ -10,7 +10,7 @@ const UniversityDetailsPages = () => {
 
   const fetchUniversity = async () => {
     const res = await fetch(
-      `https://api.worldwisescholars.com/api/university/${id}`,
+      `https://wws-idp-server-gray.vercel.app/api/university/${id}`,
     );
     return res.json();
   };
